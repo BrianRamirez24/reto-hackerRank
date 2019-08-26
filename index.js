@@ -30,14 +30,13 @@ process.stdin.setEncoding('utf-8');
 2.obtener el maximo valor yel minimo de se vector ordenado -- ok
 
 3.crear un vctor que almacene la suma de la posiicion a 
-    la posicion 2 y asi sucesivamente con las posiciones posteriores -- ok
+  la posicion 2 y asi sucesivamente con las posiciones posteriores -- ok
 
-4.crear un vecor que almacene la suma de la posicion 0 a la 
-    sucesivamente 1 t asi sucesivamente con las pocisiones anteriores
+4.crear un vector que almacene la suma de la posicion 0 a la 
+  sucesivamente 1 t asi sucesivamente con las pocisiones anteriores
 
 5. crear un vector que lamacene el numero de coincidencias 
-    aen cada una de las posiciones en el vector 
-
+   en cada una de las posiciones en el vector 
 */
 let inputString = '';
 let currentLine = 0;
@@ -45,6 +44,8 @@ let auxiliarVector = 0;
 let maximo = 0;
 let minimo = 0;
 let recorrido;
+let aux;
+let contadorCoincidencias = 0;
 
 process.stdin.on('data', function(inputStdin) {
     inputString += inputStdin;
@@ -65,16 +66,28 @@ function countSort(arr) {
     const vector
     for (let i = 0; i < arr.length; i++){
         vector.push(parseInt(arr[i][0]));
+        //descarga los valores del vector en la poscion x
     }
-    vector = ordenarVector(vector);
-    minimo = vector[0];
-    maximo = vector[vector.length - 1];
-    for (var i= minimo; i<= maximo; i++){
-        recorrido.push(i);
 
+    vector = ordenarVector(vector);
+    //ordena el vector con base al eje x
+    minimo = vector[0];//debuelve el minimo del vector 
+    maximo = vector[vector.length - 1];//devuelve el maximo del vector 
+    for (var i= minimo; i<= maximo; i++){
+        recorrido.push(i); 
+        //crea un nuevo vector con los valores desde el minmo hasta el maximo 
     }
 }
-
+function buscarCoinicidencias(vector){
+    var j = 0;    
+    while(j<vector.length){
+        
+        j++;
+    }
+    for(var i = 0;i<vector.length;i++){
+        
+    }
+}
 function ordenarVector(vector) {
     for (let j = 0; j < vector.length; j++){
         for (let i = 0; i < vector.length; i++){
