@@ -2,50 +2,40 @@
 
 'use strict';
 
-const valores = [['20',''],
-                ['0','ab'],
-                ['0','cd'],
-                ['0','gh'],
-                ['4','ij'],
-                ['0','ab'],
-                ['0','cd'],
-                ['0','ij'],
-                ['4','that'],
-                ['3','be'],
-                ['0','to'],
-                ['1','be'],
-                ['5','question'],
-                ['1','or'],
-                ['2','not'],
-                ['4','is'],
-                ['2','to'],
-                ['4','the']];
+            var valores = [
+                [20,""],
+                [0, "ab"],
+                [6, "cd"],
+                [0, "ef"],
+                [6, "gh"],
+                [4, "ij"],
+                [0, "ab"],
+                [6, "cd"],
+                [0, "ef"],
+                [6, "gh"],
+                [0 ,"ij"],
+                [4, ",that"],
+                [3, "be"],
+                [0, "to"],
+                [1, "be"],
+                [5, "question"],
+                [1, "or"],
+                [2, "not"],
+                [4, "is"],
+                [2, "to"],
+                [4, "the"]
+                ];
+
+valores = valores.shift();
+console.log(valores);
+
+'use strict';
 
 process.stdin.resume();
 process.stdin.setEncoding('utf-8');
-/*
-1. crear un vecto en el cual se descargan todos 
-    los valores del eje x de la matriz y ordenarlo -- ok
 
-2.obtener el maximo valor yel minimo de se vector ordenado -- ok
-
-3.crear un vctor que almacene la suma de la posiicion a 
-  la posicion 2 y asi sucesivamente con las posiciones posteriores -- ok
-
-4.crear un vector que almacene la suma de la posicion 0 a la 
-  sucesivamente 1 t asi sucesivamente con las pocisiones anteriores
-
-5. crear un vector que lamacene el numero de coincidencias 
-   en cada una de las posiciones en el vector 
-*/
 let inputString = '';
 let currentLine = 0;
-let auxiliarVector = 0;
-let maximo = 0;
-let minimo = 0;
-let recorrido;
-let aux;
-let contadorCoincidencias = 0;
 
 process.stdin.on('data', function(inputStdin) {
     inputString += inputStdin;
@@ -56,6 +46,11 @@ process.stdin.on('end', function() {
 
     main();
 });
+//funcion para calcular un valor en un rango determinado 
+function randomRange(myMin, myMax) {
+    return Math.floor(Math.random() * (myMax - myMin + 1)) + myMin;
+
+}
 
 function readLine() {
     return inputString[currentLine++];
@@ -63,43 +58,77 @@ function readLine() {
 
 // Complete the countSort function below.
 function countSort(arr) {
-    const vector
-    for (let i = 0; i < arr.length; i++){
-        vector.push(parseInt(arr[i][0]));
-        //descarga los valores del vector en la poscion x
+    arr.shift();
+    arr = arr;//reescribe el vector pero sin la posicion inicial
+    let menor = 0;
+    let mayor = 0;
+
+    menor = retornarValor(arr, 1);
+    mayor = retornarValor(arr, 0);
+    var vectorRango = rangoVector(menor, mayor); 
+    //ya tengo el vector con los valores desde el minimo hasta el maximo
+}
+
+function vectorCoincidencias(arr) {
+    let vecCoin = [];
+
+    
+}
+
+function rangoVector(a, b) {
+    var vectorRango = [];
+    for (let i = a; i <= b; i++) {
+        vectorRango.push(i);
+
+    }
+    return vectorRango;
+
+}
+
+
+
+function retornarValor(arr = [], opcion = 0) {
+
+    let base = arr[5][0];
+    /*
+    defini que el elemento ubicado en la posicion 5 0 era el mayor y el menor a la vez
+    */
+    let mayor = 0;
+    let menor = 0;
+
+    if (opcion == 0) {
+
+        mayor = base
+        
+        for (let i = 0; i < arr.length; i++) {
+
+            if (mayor < arr[i][0]) {
+
+                mayor = arr[i][0];
+
+            }
+        }
+
+        return mayor;
+    }
+    else if (opcion == 1) {
+
+        menor = base;
+
+        for (let i = 0; i < arr.length; i++) {
+
+            if (menor > arr[i][0]) {
+                menor = arr[i][0];
+            }
+        }
+        return menor;
     }
 
-    vector = ordenarVector(vector);
-    //ordena el vector con base al eje x
-    minimo = vector[0];//debuelve el minimo del vector 
-    maximo = vector[vector.length - 1];//devuelve el maximo del vector 
-    for (var i= minimo; i<= maximo; i++){
-        recorrido.push(i); 
-        //crea un nuevo vector con los valores desde el minmo hasta el maximo 
-    }
+    return 
+    
 }
-function buscarCoinicidencias(vector){
-    var j = 0;    
-    while(j<vector.length){
-        
-        j++;
-    }
-    for(var i = 0;i<vector.length;i++){
-        
-    }
-}
-function ordenarVector(vector) {
-    for (let j = 0; j < vector.length; j++){
-        for (let i = 0; i < vector.length; i++){
-            if (vector[i] >= vector[i + 1]) {
-                auxiliarVector = vector[i];
-                vector[i] = vector[i + 1];
-                vector[i + 1] = aux;
-                }
-        }
-    }
-    return vector;
-}
+
+
 
 function main() {
     const n = parseInt(readLine().trim(), 10);
